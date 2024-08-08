@@ -13,7 +13,7 @@ public class DeliveryEmployeeService {
     DeliveryEmployeeDao deliveryEmployeeDao;
     DeliveryEmployeeValidator deliveryEmployeeValidator;
 
-    public static void updateDeliveryEmployee(
+    public void updateDeliveryEmployee(
             final int id, final DeliveryEmployeeRequest deliveryEmployeeRequest)
             throws SQLException, InvalidException {
 
@@ -21,7 +21,7 @@ public class DeliveryEmployeeService {
                 deliveryEmployeeRequest);
 
         DeliveryEmployee deliveryEmployeeToUpdate =
-                DeliveryEmployeeDao.getDeliveryEmployeeById(id);
+                deliveryEmployeeDao.getDeliveryEmployeeById(id);
 
         if (deliveryEmployeeToUpdate == null) {
             throw new SQLException();
