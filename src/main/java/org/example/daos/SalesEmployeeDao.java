@@ -1,70 +1,43 @@
 package org.example.daos;
 
-import org.example.models.DeliveryEmployee;
-import org.example.models.SalesEmployee;
-import org.example.models.SalesEmployeeRequest;
+import org.example.models.Employee;
+import org.example.models.Sales;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class SalesEmployeeDao {
+public class SalesEmployeeDao {
 
-    private SalesEmployeeDao() {
-    }
-    public static SalesEmployee getSalesEmployeeById(final int id)
-            throws SQLException {
+    public List<Employee> getAllSalesEmployees() throws SQLException {
+        List<Employee> salesEmployees = new ArrayList<>();
 
         try (Connection connection = DatabaseConnector.getConnection()) {
-            String query = "select employee.id as 'Employee Id', name, salary, "
-                    + "bankNumber, nationalInsurance, "
-                    + "sales.commissionRate from employee right join sales "
-                    + "on employee.id = sales.employeeID;";
+            Statement statement = connection.createStatement();
 
-            PreparedStatement statement = connection.prepareStatement(query);
-
-            statement.setInt(1, id);
-
-            ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet = statement.executeQuery(
+                    "select employee.id as \"Employee Id\", name, salary, bankNumber, "
+                            + "nationalInsurance, sales.commissionRate from employee right join "
+                            + "sales on employee.id = sales.employeeID;");
 
             while (resultSet.next()) {
-                DeliveryEmployee deliveryEmployee = new DeliveryEmployee(
-                        resultSet.getInt("delivery.id"),
-                        resultSet.getString("Name"),
+                Employee salesEmployee = new Employee(
+                        resultSet.getInt("employee.id"),
+                        resultSet.getString("name"),
                         resultSet.getDouble("salary"),
                         resultSet.getString("bankNumber"),
                         resultSet.getString("nationalInsurance"));
+                        new Sales(resultSet.getInt("sales.id"),
+                                resultSet.getDouble("commissionRate"),
+                                resultSet.getInt("employeeID"));
+
+                salesEmployees.add(salesEmployee);
             }
         }
 
-        return null;
-    }
-
-    public static void updateSalesEmployee(
-            final int id, final SalesEmployeeRequest salesEmployee)
-            throws
-            SQLException {
-
-        final int three = 3;
-        final int four = 4;
-        final int five = 5;
-
-        Connection c = DatabaseConnector.getConnection();
-
-        String updateStatement = "UPDATE employee SET name = ?, "
-                + "salary = ?, bankNumber = ?, nationalInsurance = ?, "
-                + "sales.commisionRate = ? WHERE id = (SELECT employeeID "
-                + "FROM sales WHERE id = ?);";
-
-        PreparedStatement st = c.prepareStatement(updateStatement);
-
-        st.setString(1, salesEmployee.getName());
-        st.setDouble(2, salesEmployee.getSalary());
-        st.setString(three, salesEmployee.getBankNumber());
-        st.setString(four, salesEmployee.getNationalInsurance());
-        st.setDouble(five, salesEmployee.getCommissionRate());
-
-        st.executeUpdate();
+        return salesEmployees;
     }
 }

@@ -4,6 +4,7 @@ import org.example.exceptions.InvalidException;
 import org.example.models.DeliveryEmployeeRequest;
 import org.example.services.DeliveryEmployeeService;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -30,4 +31,12 @@ public class DeliveryEmployeeController {
             throw new RuntimeException(e);
         }
     }
+
+    @GET
+    @Path("/api/deliveryEmployees")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDeliveryEmployees() {
+        return Response.ok().entity("List of delivery employees").build();
+    }
+
 }
