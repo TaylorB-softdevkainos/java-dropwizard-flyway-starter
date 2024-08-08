@@ -6,7 +6,9 @@ public class Sales {
     private int employeeID;
 
 
-    public Sales(int id, double commissionRate, int employeeID) {
+    public Sales(final int id,
+                 final double commissionRate,
+                 final int employeeID) {
         this.id = id;
         this.commissionRate = commissionRate;
         this.employeeID = employeeID;
@@ -16,7 +18,7 @@ public class Sales {
         return id;
     }
 
-    public void id(int id) {
+    public void id(final int id) {
         this.id = id;
     }
 
@@ -24,7 +26,7 @@ public class Sales {
         return commissionRate;
     }
 
-    public void setCommissionRate(double commissionRate) {
+    public void setCommissionRate(final double commissionRate) {
         this.commissionRate = commissionRate;
     }
 
@@ -32,7 +34,7 @@ public class Sales {
         return employeeID;
     }
 
-    public void setEmployeeID(int employeeID) {
+    public void setEmployeeID(final int employeeID) {
         this.employeeID = employeeID;
     }
 }

@@ -81,7 +81,9 @@ public final class SalesEmployeeDao {
             Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery(
-                    "select employee.id as \"Employee Id\", name, salary, bankNumber, nationalInsurance, sales.commissionRate from employee right join sales on employee.id = sales.employeeID;");
+                    "select employee.id as \"Employee Id\", name, salary, bankNumber, "
+                            + "nationalInsurance, sales.commissionRate from employee right join "
+                            + "sales on employee.id = sales.employeeID;");
 
             while (resultSet.next()) {
                 Employee salesEmployee = new Employee(

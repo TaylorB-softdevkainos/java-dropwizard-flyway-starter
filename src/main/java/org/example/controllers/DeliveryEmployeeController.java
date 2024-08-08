@@ -35,7 +35,7 @@ public class DeliveryEmployeeController {
     @GET
     @Path("/api/deliveryEmployees")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getDeliveryEmployees(){
+    public Response getDeliveryEmployees() {
         return Response.ok().entity("List of delivery employees").build();
     }
 

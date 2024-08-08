@@ -8,7 +8,8 @@ public class Employee {
     private String nationalInsurance;
 
 
-    public Employee(int id, String name, double salary, String bankNumber, String nationalInsurance) {
+    public Employee(final int id, final String name, final double salary,
+                    final String bankNumber, final String nationalInsurance) {
         this.id = id;
         this.name = name;
         this.salary = salary;
@@ -20,7 +21,7 @@ public class Employee {
         return id;
     }
 
-    public void setEmployeeId(int id) {
+    public void setEmployeeId(final int id) {
         this.id = id;
     }
 
@@ -28,7 +29,7 @@ public class Employee {
         return name;
     }
 
-    public void setEmployeeName(String name) {
+    public void setEmployeeName(final String name) {
         this.name = name;
     }
 
@@ -36,7 +37,7 @@ public class Employee {
         return salary;
     }
 
-    public void setEmployeeSalary(double salary) {
+    public void setEmployeeSalary(final double salary) {
         this.salary = salary;
     }
 
@@ -44,13 +45,13 @@ public class Employee {
         return bankNumber;
     }
 
-    public void setEmployeeBankNumber(String bankNumber) {
+    public void setEmployeeBankNumber(final String bankNumber) {
         this.bankNumber = bankNumber;
     }
 
     public String getEmployeeNationalInsurance() { return nationalInsurance; }
 
-    public void setEmployeeNationalInsurance(String nationalInsurance) {
+    public void setEmployeeNationalInsurance(final String nationalInsurance) {
         this.nationalInsurance = nationalInsurance;
     }
 }

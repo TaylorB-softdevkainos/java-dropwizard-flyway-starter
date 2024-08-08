@@ -4,7 +4,7 @@ public class Delivery {
     private int id;
     private int employeeID;
 
-    public Delivery(int id, int employeeID) {
+    public Delivery(final int id, final int employeeID) {
         this.id = id;
         this.employeeID = employeeID;
     }
@@ -13,7 +13,7 @@ public class Delivery {
         return id;
     }
 
-    public void id(int id) {
+    public void id(final int id) {
         this.id = id;
     }
 
@@ -21,7 +21,7 @@ public class Delivery {
         return employeeID;
     }
 
-    public void setEmployeeID(int employeeID) {
+    public void setEmployeeID(final int employeeID) {
         this.employeeID = employeeID;
     }
 }
