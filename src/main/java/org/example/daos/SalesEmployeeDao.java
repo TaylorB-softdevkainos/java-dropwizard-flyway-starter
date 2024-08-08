@@ -1,7 +1,7 @@
 package org.example.daos;
 
 import org.example.models.Employee;
-import org.example.models.sales;
+import org.example.models.Sales;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

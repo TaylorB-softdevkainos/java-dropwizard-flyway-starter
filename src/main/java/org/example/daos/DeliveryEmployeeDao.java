@@ -1,6 +1,6 @@
 package org.example.daos;
 
-import org.example.models.employee;
+import org.example.models.Employee;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
