@@ -4,24 +4,24 @@ public class Delivery {
     private int id;
     private int employeeID;
 
-    public Delivery(final int id, final int employeeID) {
-        this.id = id;
-        this.employeeID = employeeID;
+    public Delivery(final int deliveryId, final int deliveryEmployeeID) {
+        this.id = deliveryId;
+        this.employeeID = deliveryEmployeeID;
     }
 
     public int getId() {
         return id;
     }
 
-    public void id(final int id) {
-        this.id = id;
+    public void id(final int deliveryId) {
+        this.id = deliveryId;
     }
 
     public int getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(final int employeeID) {
-        this.employeeID = employeeID;
+    public void setEmployeeID(final int salesEmployeeID) {
+        this.employeeID = salesEmployeeID;
     }
 }

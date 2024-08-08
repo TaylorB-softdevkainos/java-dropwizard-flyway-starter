@@ -45,13 +45,15 @@ public class Employee {
         return bankNumber;
     }
 
-    public void setEmployeeBankNumber(final String bankNumber) {
-        this.bankNumber = bankNumber;
+    public void setEmployeeBankNumber(final String employeeBankNumber) {
+        this.bankNumber = employeeBankNumber;
     }
 
-    public String getEmployeeNationalInsurance() { return nationalInsurance; }
+    public String getEmployeeNationalInsurance() {
+        return nationalInsurance;
+    }
 
-    public void setEmployeeNationalInsurance(final String nationalInsurance) {
-        this.nationalInsurance = nationalInsurance;
+    public void setEmployeeNationalInsurance(final String employeeNationalInsurance) {
+        this.nationalInsurance = employeeNationalInsurance;
     }
 }
