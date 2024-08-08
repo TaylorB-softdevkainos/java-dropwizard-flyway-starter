@@ -3,16 +3,22 @@ package org.example.daos;
 import org.example.models.DeliveryEmployee;
 import org.example.models.SalesEmployee;
 import org.example.models.SalesEmployeeRequest;
+import org.example.models.Employee;
+import org.example.models.Sales;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class SalesEmployeeDao {
 
     private SalesEmployeeDao() {
     }
+
     public static SalesEmployee getSalesEmployeeById(final int id)
             throws SQLException {
 
@@ -66,5 +72,32 @@ public final class SalesEmployeeDao {
         st.setDouble(five, salesEmployee.getCommissionRate());
 
         st.executeUpdate();
+    }
+
+    public List<Employee> getAllSalesEmployees() throws SQLException {
+        List<Employee> salesEmployees = new ArrayList<>();
+
+        try (Connection connection = DatabaseConnector.getConnection()) {
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(
+                    "select employee.id as \"Employee Id\", name, salary, bankNumber, nationalInsurance, sales.commissionRate from employee right join sales on employee.id = sales.employeeID;");
+
+            while (resultSet.next()) {
+                Employee salesEmployee = new Employee(
+                        resultSet.getInt("employee.id"),
+                        resultSet.getString("name"),
+                        resultSet.getDouble("salary"),
+                        resultSet.getString("bankNumber"),
+                        resultSet.getString("nationalInsurance"));
+                new Sales(resultSet.getInt("sales.id"),
+                        resultSet.getDouble("commissionRate"),
+                        resultSet.getInt("employeeID"));
+
+                salesEmployees.add(salesEmployee);
+            }
+        }
+
+        return salesEmployees;
     }
 }
