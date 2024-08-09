@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public final class DeliveryEmployeeDao {
 
-    private DeliveryEmployeeDao() {
+    public DeliveryEmployeeDao() {
 
     }
 

@@ -21,6 +21,10 @@ public class ProjectController {
 
     ProjectService projectService;
 
+    public ProjectController(ProjectService projectService) {
+        this.projectService = projectService;
+    }
+
     @PUT
     @Path("/{projectId}, /{deliveryId}")
     @Produces(MediaType.APPLICATION_JSON)

@@ -3,6 +3,7 @@ package org.example.controllers;
 import org.example.exceptions.InvalidException;
 import org.example.models.DeliveryEmployeeRequest;
 import org.example.services.DeliveryEmployeeService;
+import org.example.services.ProjectService;
 
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -14,8 +15,14 @@ import java.sql.SQLException;
 
 public class DeliveryEmployeeController {
 
+    DeliveryEmployeeService deliveryEmployeeService;
+
+    public DeliveryEmployeeController(DeliveryEmployeeService deliveryEmployeeServiceService) {
+        this.deliveryEmployeeService = deliveryEmployeeServiceService;
+    }
+
     @PUT
-    @Path("/{id}")
+    @Path("api/deliveryEmployees/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateDeliveryEmployee(
             @PathParam("id") final int id,

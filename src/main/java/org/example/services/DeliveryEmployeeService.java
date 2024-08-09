@@ -13,6 +13,10 @@ public class DeliveryEmployeeService {
     DeliveryEmployeeDao deliveryEmployeeDao;
     DeliveryEmployeeValidator deliveryEmployeeValidator;
 
+    public DeliveryEmployeeService(final DeliveryEmployeeDao deliveryEmployeeDao) {
+        this.deliveryEmployeeDao = deliveryEmployeeDao;
+    }
+
     public static void updateDeliveryEmployee(
             final int id, final DeliveryEmployeeRequest deliveryEmployeeRequest)
             throws SQLException, InvalidException {
